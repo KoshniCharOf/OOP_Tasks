@@ -1,0 +1,78 @@
+import java.util.ArrayList;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.TreeSet;
+
+import agency.Agency;
+import client.Buyer;
+import client.Seller;
+import estates.Estate;
+
+public class Demo {
+	
+	public static void main(String[] args) {
+		
+		
+		
+//		Да се реализира демо, в което:
+//			1. Да се създаде агенция „Таланти Естейтс“ с пет агента с произволни имена.
+			
+		Agency agency = new Agency("Таланти Естейтс");
+		
+//			2. Да се създадат 30 продавача на имоти. За всеки продавач да се създаде имот на
+//			произволен принцип – 33% шанс да е апартамент, 33% шанс да е къща и 33% шанс за
+//			парцел. Останалите характеристики също да са на произволен принцип. Цените на
+//			имотите да варират – за къщите между 50 000 и 80 000 евро, за апартаментите – между
+//			70 000 и 150 000 евро; за парцелите – между 30 000 и 85 000 евро.
+		ArrayList<Seller> sellers = new ArrayList<>();
+		for (int i = 0; i < 30; i++) {
+			sellers.add(new Seller("Successor "+i));	
+		}
+//			3. Всички продавачи да регистрират имотите си за продажба в агенцията;
+		for (Seller s : sellers) {
+			s.registerEstate(agency);
+		}
+		
+		agency.printCatalog();
+//			4. Да се създадат 10 купувача на произволен принцип с бюджети между 30 000 и 150 000
+//			евро;
+		ArrayList<Buyer> buyers = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			buyers.add(new Buyer("Dreamer "+i));
+		}
+//			5. Всички купувачи да регистрират заявки за търсене на имот към агенцията;
+		for (Buyer b : buyers) {
+			b.searchRequest(agency);
+			for (int i = 0; i < 3; i++) {
+				b.requestView(randomEstate(agency));
+			}
+		}
+//			6. Всеки купувач да заяви 3 огледа на произволни имоти от агенцията;
+		for (Buyer b : buyers) {
+			for (int i = 0; i < 3; i++) {
+				b.requestView(randomEstate(agency));
+			}
+		}
+		
+//			7. Всеки купувач да заявки покупка на някой от огледаните от него имоти на произволен
+//			принцип;
+		for (Buyer buyer : buyers) {
+			buyer.buyEstate();
+		}
+//			8. Да се изпише на екрана паричния баланс на агенцията след продажбата на имотите;
+		agency.printBalance();
+//			9. Да се изпише на екрана паричния баланс на всеки агент от агенцията след продажбата
+//			на имотите, като агентите са сортирани от най-богатия към този с най-малко печалби.
+		agency.printAgentsBalance();
+	}
+
+	static Estate randomEstate(Agency a){
+		ArrayList<Estate> estates = new ArrayList<>();
+		for (Entry<String, TreeSet<Estate>> en : a.getCatalog().entrySet()) {
+			for (Estate e : en.getValue()) {
+				estates.add(e);
+			}
+		}
+		return estates.get(new Random().nextInt(estates.size()));
+	}
+}
