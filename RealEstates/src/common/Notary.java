@@ -1,0 +1,37 @@
+package common;
+import agency.Agency;
+import client.Buyer;
+import client.Client;
+import client.Seller;
+import estates.Estate;
+
+/**
+ * 
+ */
+
+/**
+ * Ще изповяда сделката
+ *
+ */
+public final class Notary {
+	
+	public static final boolean conveyancingDeal(Client seller, Estate e, Buyer buyer){
+		if(!e.getOwner().equals(seller)){
+			System.out.println("This seller is not the owner.");
+			return false;
+		}
+		//Big money first
+		double sum = e.getPrice();
+		buyer.payTo(sum, e.getOwner());
+		//comissions
+		Agency a = e.getAgent().getWorkPlace();
+		double comissionBuyer = buyer.pay(e.getPrice()*3/100);
+		a.recieveMoneyFor(comissionBuyer, e);
+		double comissionSeller = seller.pay(e.getPrice()*3/100);
+		a.recieveMoneyFor(comissionSeller, e);
+		
+		seller.swapOwnershipTo(buyer);
+		return true;
+	}
+
+}
