@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/Demo/Demo.java=UTF-8
+encoding//src/Police/PoliceOfficer.java=UTF-8
+encoding//src/Police/Policemen.java=UTF-8
+encoding//src/Police/Swat.java=UTF-8
+encoding//src/country/City.java=UTF-8
+encoding//src/country/Country.java=UTF-8
+encoding//src/country/Passport.java=UTF-8
+encoding//src/immigrants/Extremist.java=UTF-8
+encoding//src/immigrants/Immigrant.java=UTF-8
+encoding//src/immigrants/Normal.java=UTF-8
+encoding//src/immigrants/Radical.java=UTF-8
+encoding//src/weapons/Bomb.java=UTF-8
+encoding//src/weapons/Gun.java=UTF-8
+encoding//src/weapons/Kalashnik.java=UTF-8
+encoding//src/weapons/Weapon.java=UTF-8
