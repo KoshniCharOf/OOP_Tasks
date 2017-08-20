@@ -1,0 +1,80 @@
+
+package client;
+
+import java.util.Date;
+import java.util.Random;
+import java.util.TreeSet;
+
+import agency.Agency;
+import agency.View;
+import common.Notary;
+import estates.Estate;
+
+
+
+/**
+ * Купувачите имат бюджет, с който разполагат за покупка на имот, както и списък с огледи,
+които са направили.
+ *
+ */
+public class Buyer extends Client {
+	
+    private double budget;
+	private TreeSet<View> views;
+	
+	public Buyer(String name) {
+		super(name);
+		this.budget = new Random().nextInt(120000)+30000;
+		this.views = new TreeSet<>();
+		this.money = budget*2;
+	}
+	
+	
+//	Всеки клиент може да изпълнява следните действия:
+	
+/*		• Ако е купувач – да регистрира запитване за търсене на имот към агенцията. В такъв
+		случай от агенцията му се причислява агент на произволен принцип. Клиентът се
+		регистрира в списъка с купувачи на агента.*/
+		public void searchRequest(Agency a){
+			this.agent = a.asignAgent();
+			this.agent.addBuyer(this);
+		}
+//		• Ако е купувач – да заяви оглед на определен имот от каталога с имоти. Огледът може
+//		да се осъществи само ако цената на имота е под бюджета на купувача. При
+//		осъществяване на оглед, той влиза в списъка с огледи на купувача, както и на агента.
+		public void requestView(Estate e){
+			if(e.getPrice() > this.budget){
+				System.out.println(this.name+" No view budget "+this.budget+" Estate price: "+e.getPrice());
+				return;
+			}
+			View v  = new View(e, this.agent, this, new Date());
+			this.views.add(v);
+			this.agent.getViews().add(v);
+			System.out.println(v);
+		}
+//		• Ако е купувач – да заяви покупка на имот. Покупката може да бъде само на имот, на
+//		който купувачът е ходил на оглед. При покупка купувачът дължи 3% от цената ха
+//		имота на агенцията. Агенцията дава половината от комисионната на агента, а
+//		останалата половина влиза в нейния бюджет. Продавачът на имота също дължи 3%
+//		комисионна на агенцията, като и от тази комисионна половината остава за агента под
+//		формата на хонорар.
+		public void buyEstate(){
+			if(this.views.isEmpty()){
+				System.out.println(this.name+" have no views. Go work harder!");
+				return;
+			}
+			Estate e = this.views.last().getEstate();
+			
+			if(Notary.conveyancingDeal(e.getOwner(), e, this)){ 
+				
+				System.out.println("Congats, "+this.name+" you have bought "+this.estate);	
+			}
+			
+		}
+		@Override
+		public String toString() {
+			
+			return super.toString()+ "Buyer [budget=" + budget + "]";
+		}
+		
+}

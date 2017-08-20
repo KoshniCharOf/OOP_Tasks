@@ -17,6 +17,7 @@ public class Patient extends Person {
 		
 		this.age = Val.validNum(age);
 		this.gender = gender;//no validation, there are genders for whole alphabet
+		
 	}
 	
 	public void setCuring(Doctor curing) {

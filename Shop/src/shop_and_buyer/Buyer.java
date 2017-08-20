@@ -5,24 +5,23 @@ import java.util.Map.Entry;
 
 import products.Product;
 
-/**
- * 
- */
 
 /**
- * @author NIE
- *В магазина могат да пазаруват купувачи. Всеки купувач има следните характеристики:
-* Магазин, в който е влязал да пазарува;
-* Сума пари, която носи със себе си;
-* Максимален брой артикули, които може да купи.
+ * п‚·
+ *Р’ РјР°РіР°Р·РёРЅР° РјРѕРіР°С‚ РґР° РїР°Р·Р°СЂСѓРІР°С‚ РєСѓРїСѓРІР°С‡Рё. Р’СЃРµРєРё РєСѓРїСѓРІР°С‡ РёРјР° СЃР»РµРґРЅРёС‚Рµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё:
+* РњР°РіР°Р·РёРЅ, РІ РєРѕР№С‚Рѕ Рµ РІР»СЏР·Р°Р» РґР° РїР°Р·Р°СЂСѓРІР°;
+* РЎСѓРјР° РїР°СЂРё, РєРѕСЏС‚Рѕ РЅРѕСЃРё СЃСЉСЃ СЃРµР±Рµ СЃРё;
+* РњР°РєСЃРёРјР°Р»РµРЅ Р±СЂРѕР№ Р°СЂС‚РёРєСѓР»Рё, РєРѕРёС‚Рѕ РјРѕР¶Рµ РґР° РєСѓРїРё.
  */
 public class Buyer {
+	
 	private Shop shop;
 	private double money;
 	private int maxProducts;
 	private HashMap<Product, Integer> bag;
-	/*5. Създаване на купувачи с предварително подадени магазин, брой продукти за
-пазаруване и пари в наличност.*/
+	
+	/*5. РЎСЉР·РґР°РІР°РЅРµ РЅР° РєСѓРїСѓРІР°С‡Рё СЃ РїСЂРµРґРІР°СЂРёС‚РµР»РЅРѕ РїРѕРґР°РґРµРЅРё РјР°РіР°Р·РёРЅ, Р±СЂРѕР№ РїСЂРѕРґСѓРєС‚Рё Р·Р°
+	РїР°Р·Р°СЂСѓРІР°РЅРµ Рё РїР°СЂРё РІ РЅР°Р»РёС‡РЅРѕСЃС‚.*/
 	public Buyer(Shop shop, double money, int maxProducts) {
 		super();
 		this.shop = shop;
@@ -31,11 +30,11 @@ public class Buyer {
 		this.bag = new HashMap<Product, Integer>();
 	}
 	
-	/*Всеки купувач може да извършва следните действия:
-* Да добавя продукт на килограм към количката си;
-* Да добавя продукт на бройки в количката си;
-* Да премахва продукт на килограм от количката си;
-* Да премахва продукт на бройки от количката си.*/
+	/*Р’СЃРµРєРё РєСѓРїСѓРІР°С‡ РјРѕР¶Рµ РґР° РёР·РІСЉСЂС€РІР° СЃР»РµРґРЅРёС‚Рµ РґРµР№СЃС‚РІРёСЏ:
+* Р”Р° РґРѕР±Р°РІСЏ РїСЂРѕРґСѓРєС‚ РЅР° РєРёР»РѕРіСЂР°Рј РєСЉРј РєРѕР»РёС‡РєР°С‚Р° СЃРё;
+* Р”Р° РґРѕР±Р°РІСЏ РїСЂРѕРґСѓРєС‚ РЅР° Р±СЂРѕР№РєРё РІ РєРѕР»РёС‡РєР°С‚Р° СЃРё;
+* Р”Р° РїСЂРµРјР°С…РІР° РїСЂРѕРґСѓРєС‚ РЅР° РєРёР»РѕРіСЂР°Рј РѕС‚ РєРѕР»РёС‡РєР°С‚Р° СЃРё;
+* Р”Р° РїСЂРµРјР°С…РІР° РїСЂРѕРґСѓРєС‚ РЅР° Р±СЂРѕР№РєРё РѕС‚ РєРѕР»РёС‡РєР°С‚Р° СЃРё.*/
 	public void addProduct(Product p, int quantity){
 		if( this.bag.size() < maxProducts && enoughSupply(p, quantity)){
 			this.bag.put(p, quantity);
@@ -45,6 +44,7 @@ public class Buyer {
 			System.out.println(p +" not added ");
 		}
 	}
+	
 	public void removeProduct(Product p , int quantity){
 		if(this.bag.size()>0 && validBag(p, quantity)){
 			int newQuantity = bag.get(p)-quantity;
@@ -61,12 +61,14 @@ public class Buyer {
 			System.out.println(p+" not removed");
 		}
 	}
+	
 	public void emptyBag(){
 		for (Entry<Product, Integer> it : bag.entrySet()) {
 			this.shop.loadShop(it.getKey(), it.getValue());
 			this.bag = new HashMap<>();
 		}
 	}
+	
 	public void pay(){
 		double sum = 0;
 		for ( Entry<Product, Integer> entry: bag.entrySet()) {
@@ -85,10 +87,12 @@ public class Buyer {
 			emptyBag();
 		}
 	}
+	
 	private boolean enoughSupply(Product p, int quantity){
 		return this.shop.getProducts().containsKey(p) 
 				&& this.shop.getProducts().get(p)>=quantity;
 	}
+	
 	private boolean validBag(Product p , int quantity){
 		return this.bag.containsKey(p) && this.bag.get(p)>=quantity;
 	}

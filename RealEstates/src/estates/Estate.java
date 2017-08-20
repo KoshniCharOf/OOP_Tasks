@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package estates;
 
 import java.util.Random;
@@ -9,33 +7,31 @@ import agency.Agent;
 import client.Client;
 
 /**
- *Всеки имот съдържа следните характеристики:
-• описание;
-• адрес;
-• цена на имота;
-•
-• площ (кв.м.);
-• агент, който отговаря и разпространява имота.
+ *п‚·  Р’СЃРµРєРё РёРјРѕС‚ СЃСЉРґСЉСЂР¶Р° СЃР»РµРґРЅРёС‚Рµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё:
+вЂў РѕРїРёСЃР°РЅРёРµ;
+вЂў Р°РґСЂРµСЃ;
+вЂў С†РµРЅР° РЅР° РёРјРѕС‚Р°;
+вЂў
+вЂў РїР»РѕС‰ (РєРІ.Рј.);
+вЂў Р°РіРµРЅС‚, РєРѕР№С‚Рѕ РѕС‚РіРѕРІР°СЂСЏ Рё СЂР°Р·РїСЂРѕСЃС‚СЂР°РЅСЏРІР° РёРјРѕС‚Р°.
  *
  */
 public abstract class Estate implements Comparable<Estate>{
+	
 	protected String description;
 	protected String adress;
 	protected double price; 
 	protected int area;
 	protected Agent agent;
-	public void setAgent(Agent agent) {
-		this.agent = agent;
-	}
 
 	protected String type;
 	protected Client owner;
 	
-	//тип на имота (описани по-долу);
-//	Имотите биват:
-//		1. апартаменти (студио, гарсониера, двустаен, тристаен, мезонет);
-//		2. къщи (етаж от къща, цяла къща);
-//		3. парцели (нива, поляна, гора).
+/*	С‚РёРї РЅР° РёРјРѕС‚Р° (РѕРїРёСЃР°РЅРё РїРѕ-РґРѕР»Сѓ);
+	РРјРѕС‚РёС‚Рµ Р±РёРІР°С‚:
+		1. Р°РїР°СЂС‚Р°РјРµРЅС‚Рё (СЃС‚СѓРґРёРѕ, РіР°СЂСЃРѕРЅРёРµСЂР°, РґРІСѓСЃС‚Р°РµРЅ, С‚СЂРёСЃС‚Р°РµРЅ, РјРµР·РѕРЅРµС‚);
+		2. РєСЉС‰Рё (РµС‚Р°Р¶ РѕС‚ РєСЉС‰Р°, С†СЏР»Р° РєСЉС‰Р°);
+		3. РїР°СЂС†РµР»Рё (РЅРёРІР°, РїРѕР»СЏРЅР°, РіРѕСЂР°).*/
 	
 	
 	public Estate( Client owner) {
@@ -56,7 +52,9 @@ public abstract class Estate implements Comparable<Estate>{
 		return this.price-o.price>0?1:-1;
 	}
 
-
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
 
 	public double getPrice() {
 		return price;

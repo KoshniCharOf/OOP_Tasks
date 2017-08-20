@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package shipment;
 
 import java.time.LocalTime;
@@ -8,9 +6,9 @@ import java.time.LocalTime;
 import Town.Citizen;
 
 /**
- * @author NIE
- *Писмата и колетите имат данни на подателя и данни на получателя
-(име, фамилия и адрес).
+ *п‚·
+ *РџРёСЃРјР°С‚Р° Рё РєРѕР»РµС‚РёС‚Рµ РёРјР°С‚ РґР°РЅРЅРё РЅР° РїРѕРґР°С‚РµР»СЏ Рё РґР°РЅРЅРё РЅР° РїРѕР»СѓС‡Р°С‚РµР»СЏ
+(РёРјРµ, С„Р°РјРёР»РёСЏ Рё Р°РґСЂРµСЃ).
  */
 public abstract class Shipment implements Comparable<Shipment>{
 	private Citizen sender;
@@ -23,7 +21,7 @@ public abstract class Shipment implements Comparable<Shipment>{
 		this.stamp = LocalTime.now();
 	}
 
-	//Таксата за пускане на писмо е 0.5 лева.
+	//РўР°РєСЃР°С‚Р° Р·Р° РїСѓСЃРєР°РЅРµ РЅР° РїРёСЃРјРѕ Рµ 0.5 Р»РµРІР°.
 	public abstract double getFee();
 	public abstract int deliverTime();
 

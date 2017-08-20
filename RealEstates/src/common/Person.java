@@ -1,7 +1,5 @@
 package common;
 
-
-
 import client.Client;
 import estates.Estate;
 
@@ -33,6 +31,7 @@ public class Person implements Comparable<Person> {
 		this.money -= money;
 		p.recieveMoney(money);
 	}
+	
 	public double pay(double money){//Just trying
 		if(this.money < money){
 			System.out.println("out of cash");

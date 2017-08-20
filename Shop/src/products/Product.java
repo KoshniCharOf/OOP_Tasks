@@ -1,16 +1,14 @@
 package products;
-/**
- * 
- */
+
 
 /**
- * @author NIE
- *Всеки продукт има следните характеристики:
-* Наименование;
-* Цена;
-* Наличност –килограм или брой в зависимост от вида на продукта.
-Продуктите могат да се продават на килограм или на бройка. Няма продукти, които да се
-продават както на килограм, така и на брой.
+ * п‚·
+ *Р’СЃРµРєРё РїСЂРѕРґСѓРєС‚ РёРјР° СЃР»РµРґРЅРёС‚Рµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё:
+* РќР°РёРјРµРЅРѕРІР°РЅРёРµ;
+* Р¦РµРЅР°;
+* РќР°Р»РёС‡РЅРѕСЃС‚ вЂ“РєРёР»РѕРіСЂР°Рј РёР»Рё Р±СЂРѕР№ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚ РѕС‚ РІРёРґР° РЅР° РїСЂРѕРґСѓРєС‚Р°.
+РџСЂРѕРґСѓРєС‚РёС‚Рµ РјРѕРіР°С‚ РґР° СЃРµ РїСЂРѕРґР°РІР°С‚ РЅР° РєРёР»РѕРіСЂР°Рј РёР»Рё РЅР° Р±СЂРѕР№РєР°. РќСЏРјР° РїСЂРѕРґСѓРєС‚Рё, РєРѕРёС‚Рѕ РґР° СЃРµ
+РїСЂРѕРґР°РІР°С‚ РєР°РєС‚Рѕ РЅР° РєРёР»РѕРіСЂР°Рј, С‚Р°РєР° Рё РЅР° Р±СЂРѕР№.
  */
 public abstract class Product {
 
@@ -23,10 +21,12 @@ public abstract class Product {
 		this.price = price;
 		this.quantity = quantity;
 	}
+	
 	@Override
 	public String toString() {
 		return " " + name;
 	}
+	
 	public double getPrice() {
 		return price;
 	}
@@ -34,6 +34,7 @@ public abstract class Product {
 	public int getQuantity() {
 		return quantity;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -45,6 +46,7 @@ public abstract class Product {
 		result = prime * result + quantity;
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

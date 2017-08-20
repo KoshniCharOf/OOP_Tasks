@@ -1,12 +1,7 @@
-/**
- * 
- */
+
 package supliers;
 
-/**
- * 
- *
- */
+
 public class Wholesale extends Supplier {
 
 

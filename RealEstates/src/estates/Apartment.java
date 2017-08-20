@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package estates;
 
 import java.util.Random;
@@ -10,9 +8,9 @@ import client.Client;
 
 
 /**
- * 1. апартаменти (студио, гарсониера, двустаен, тристаен, мезонет);
- * Апартаментите и къщите разполагат с информация за вид строителство: ЕПК,
- * Тухла, Панел или Кирпич.
+ * 1. Р°РїР°СЂС‚Р°РјРµРЅС‚Рё (СЃС‚СѓРґРёРѕ, РіР°СЂСЃРѕРЅРёРµСЂР°, РґРІСѓСЃС‚Р°РµРЅ, С‚СЂРёСЃС‚Р°РµРЅ, РјРµР·РѕРЅРµС‚);
+ * РђРїР°СЂС‚Р°РјРµРЅС‚РёС‚Рµ Рё РєСЉС‰РёС‚Рµ СЂР°Р·РїРѕР»Р°РіР°С‚ СЃ РёРЅС„РѕСЂРјР°С†РёСЏ Р·Р° РІРёРґ СЃС‚СЂРѕРёС‚РµР»СЃС‚РІРѕ: Р•РџРљ,
+ * РўСѓС…Р»Р°, РџР°РЅРµР» РёР»Рё РљРёСЂРїРёС‡.п‚·
  *
  */
 public class Apartment extends Estate implements IBuilding {
@@ -41,7 +39,8 @@ public class Apartment extends Estate implements IBuilding {
 		return "" + this.construction;
 
 	}
-	//за апартаментите – межд 70 000 и 150 000 евро;
+	
+	//Р·Р° Р°РїР°СЂС‚Р°РјРµРЅС‚РёС‚Рµ вЂ“ РјРµР¶Рґ 70 000 Рё 150 000 РµРІСЂРѕ;
 	@Override
 	protected double validPrice() {
 		
@@ -57,6 +56,7 @@ public class Apartment extends Estate implements IBuilding {
 	public Kind getKind() {
 		return kind;
 	}
+	
 	@Override
 	public String toString() {
 		return "Apartment  " + construction + "]"+super.toString();

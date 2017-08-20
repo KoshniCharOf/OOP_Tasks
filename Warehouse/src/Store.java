@@ -3,15 +3,13 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Random;
 
-/**
- * 
- */
+
 
 /**
- * Да се създадат три обекта, които описват магазини за продажба на стоки. Магазините имат
-продукти в наличност, като типовете и информацията за всеки продукт е аналогична на тези в
-склада. Магазинът е отговорен за това да вземе стока от склада, когато количеството й падне
-под определен минимален праг за този магазин.
+ * Р”Р° СЃРµ СЃСЉР·РґР°РґР°С‚ С‚СЂРё РѕР±РµРєС‚Р°, РєРѕРёС‚Рѕ РѕРїРёСЃРІР°С‚ РјР°РіР°Р·РёРЅРё Р·Р° РїСЂРѕРґР°Р¶Р±Р° РЅР° СЃС‚РѕРєРё. РњР°РіР°Р·РёРЅРёС‚Рµ РёРјР°С‚
+РїСЂРѕРґСѓРєС‚Рё РІ РЅР°Р»РёС‡РЅРѕСЃС‚, РєР°С‚Рѕ С‚РёРїРѕРІРµС‚Рµ Рё РёРЅС„РѕСЂРјР°С†РёСЏС‚Р° Р·Р° РІСЃРµРєРё РїСЂРѕРґСѓРєС‚ Рµ Р°РЅР°Р»РѕРіРёС‡РЅР° РЅР° С‚РµР·Рё РІ
+СЃРєР»Р°РґР°. РњР°РіР°Р·РёРЅСЉС‚ Рµ РѕС‚РіРѕРІРѕСЂРµРЅ Р·Р° С‚РѕРІР° РґР° РІР·РµРјРµ СЃС‚РѕРєР° РѕС‚ СЃРєР»Р°РґР°, РєРѕРіР°С‚Рѕ РєРѕР»РёС‡РµСЃС‚РІРѕС‚Рѕ Р№ РїР°РґРЅРµ
+РїРѕРґ РѕРїСЂРµРґРµР»РµРЅ РјРёРЅРёРјР°Р»РµРЅ РїСЂР°Рі Р·Р° С‚РѕР·Рё РјР°РіР°Р·РёРЅ.п‚·
  *
  */
 public class Store {
@@ -56,13 +54,15 @@ public class Store {
 	}
 
 	public void openStore(){
+		
 		for (Client client : clients) {
-			Store.checkoutClient = client.getName();//I know it is really bad, but now working:)
+			Store.checkoutClient = client.getName();
 			this.sell(client.buy());
-			//System.out.print(client.getName());
+
 		}
 	}
 	private void sell(String name){
+		
 		checkStock(); // in my store nobody wait(just can't make that)
 		int bought = new Random().nextInt(4)+1;
 		for (Entry<String, HashMap<Product, Integer>> en : merchandise.entrySet()) {

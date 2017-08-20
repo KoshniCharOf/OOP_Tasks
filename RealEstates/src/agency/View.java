@@ -4,19 +4,17 @@ import java.util.Date;
 import client.Buyer;
 import estates.Estate;
 
-/**
- * 
- */
 
 /**
- * Всеки оглед има следните характеристики:
-• имот;
-• агент;
-• купувач;
-• дата на провеждане на огледа.
+ п‚·  Р’СЃРµРєРё РѕРіР»РµРґ РёРјР° СЃР»РµРґРЅРёС‚Рµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё:
+вЂў РёРјРѕС‚;
+вЂў Р°РіРµРЅС‚;
+вЂў РєСѓРїСѓРІР°С‡;
+вЂў РґР°С‚Р° РЅР° РїСЂРѕРІРµР¶РґР°РЅРµ РЅР° РѕРіР»РµРґР°.
  *
  */
 public class View implements Comparable<View>{
+	
 	private Estate estate;
 	private Agent agent;
 	private Buyer buyer;

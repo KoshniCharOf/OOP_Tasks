@@ -1,5 +1,6 @@
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import products.KiloProd;
@@ -20,18 +21,19 @@ public class demo {
 		products.put(p, p.getQuantity());
 		Shop vsichkoPoLevche = new Shop("Levcho", "bul. Makedonia", 1000, products, 5);
 		
-		/*2. Създаване на различни видове стоки на килограм –Месо, Сирене, Риба. Всяка стока се
-създава с наименование, цена и количество;*/
+		/*2. РЎСЉР·РґР°РІР°РЅРµ РЅР° СЂР°Р·Р»РёС‡РЅРё РІРёРґРѕРІРµ СЃС‚РѕРєРё РЅР° РєРёР»РѕРіСЂР°Рј вЂ“РњРµСЃРѕ, РЎРёСЂРµРЅРµ, Р РёР±Р°. Р’СЃСЏРєР° СЃС‚РѕРєР° СЃРµ
+		СЃСЉР·РґР°РІР° СЃ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ, С†РµРЅР° Рё РєРѕР»РёС‡РµСЃС‚РІРѕ;*/
 		Product fish = new KiloProd("Skumria", 20, 5, Type.FISH);
 		Product cheese = new KiloProd("nai-vonqshtoto", 5, 10, Type.CHEESE);
 		Product meat = new KiloProd("Govejdo", 10, 20, Type.MEAT);
 		
-		/*3. Създаване на различни видове стоки на бройка –Бира, Книга, Стол. Всяка стока се
-създава с наименование, цена и количество;*/
+		/*3. РЎСЉР·РґР°РІР°РЅРµ РЅР° СЂР°Р·Р»РёС‡РЅРё РІРёРґРѕРІРµ СЃС‚РѕРєРё РЅР° Р±СЂРѕР№РєР° вЂ“Р‘РёСЂР°, РљРЅРёРіР°, РЎС‚РѕР». Р’СЃСЏРєР° СЃС‚РѕРєР° СЃРµ
+		СЃСЉР·РґР°РІР° СЃ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ, С†РµРЅР° Рё РєРѕР»РёС‡РµСЃС‚РІРѕ;*/
 		Product beer = new NumProd("kamenitza",2,50,TypoNum.BEER);
 		Product book = new NumProd("voina i mir",33.3, 10, TypoNum.BOOK);
 		Product stool = new NumProd("Kresloto ne dedo",555.55,2,TypoNum.STOOL);
-		/*4. Добавяне на стоките в магазина;*/
+		
+		/*4. Р”РѕР±Р°РІСЏРЅРµ РЅР° СЃС‚РѕРєРёС‚Рµ РІ РјР°РіР°Р·РёРЅР°;*/
 		products.put(fish, fish.getQuantity());
 		products.put(cheese, cheese.getQuantity());
 		products.put(meat, meat.getQuantity());
@@ -39,39 +41,40 @@ public class demo {
 		products.put(book, book.getQuantity());
 		products.put(stool, stool.getQuantity());
 		vsichkoPoLevche.printGoods();
-		/*5. Създаване на купувачи с предварително подадени магазин, брой продукти зa
-пазаруване и пари в наличност.*/
+		
+		/*5. РЎСЉР·РґР°РІР°РЅРµ РЅР° РєСѓРїСѓРІР°С‡Рё СЃ РїСЂРµРґРІР°СЂРёС‚РµР»РЅРѕ РїРѕРґР°РґРµРЅРё РјР°РіР°Р·РёРЅ, Р±СЂРѕР№ РїСЂРѕРґСѓРєС‚Рё Р·a
+		РїР°Р·Р°СЂСѓРІР°РЅРµ Рё РїР°СЂРё РІ РЅР°Р»РёС‡РЅРѕСЃС‚.*/
 		Buyer rachka = new Buyer(vsichkoPoLevche, 200, 2);
 		Buyer nachka = new Buyer(vsichkoPoLevche, 600, 20);
 		Buyer pachka = new Buyer(vsichkoPoLevche, 1000, 10);
-//		ArrayList<Buyer> balaci = new ArrayList<>();
-//		balaci.add(rachka);
-//		balaci.add(nachka);
+/*		ArrayList<Buyer> buyers = new ArrayList<>();
+		buyers.add(rachka);
+		buyers.add(nachka);
+		buyers.add(pachka);*/
 		
-//		balaci.add(pachka);
-		
-		/*6. Добавяне на стоки към количката на купувачите;*/
-		System.out.println("Добавяне на стоки към количката на купувачите");
+		/*6. Р”РѕР±Р°РІСЏРЅРµ РЅР° СЃС‚РѕРєРё РєСЉРј РєРѕР»РёС‡РєР°С‚Р° РЅР° РєСѓРїСѓРІР°С‡РёС‚Рµ;*/
+		System.out.println("Р”РѕР±Р°РІСЏРЅРµ РЅР° СЃС‚РѕРєРё РєСЉРј РєРѕР»РёС‡РєР°С‚Р° РЅР° РєСѓРїСѓРІР°С‡РёС‚Рµ");
 		rachka.addProduct(book, 1);
 		rachka.addProduct(beer, 2);
 		rachka.addProduct(meat, 2 );
 		
 		nachka.addProduct(cheese, 2);
 		nachka.addProduct(stool, 1);
-		//7. Премахване на стоки от количката на купувачите;
-		System.out.println("Премахване на стоки от количката на купувачите");
+		
+		//7. РџСЂРµРјР°С…РІР°РЅРµ РЅР° СЃС‚РѕРєРё РѕС‚ РєРѕР»РёС‡РєР°С‚Р° РЅР° РєСѓРїСѓРІР°С‡РёС‚Рµ;
+		System.out.println("РџСЂРµРјР°С…РІР°РЅРµ РЅР° СЃС‚РѕРєРё РѕС‚ РєРѕР»РёС‡РєР°С‚Р° РЅР° РєСѓРїСѓРІР°С‡РёС‚Рµ");
 		nachka.removeProduct(book, 1);
 		nachka.removeProduct(cheese, 2);
-		//8. Плащане от страна на купувачите на касата на магазина;
-		System.out.println("Плащане от страна на купувачите на касата на магазина");
+		
+		//8. РџР»Р°С‰Р°РЅРµ РѕС‚ СЃС‚СЂР°РЅР° РЅР° РєСѓРїСѓРІР°С‡РёС‚Рµ РЅР° РєР°СЃР°С‚Р° РЅР° РјР°РіР°Р·РёРЅР°;
+		System.out.println("РџР»Р°С‰Р°РЅРµ РѕС‚ СЃС‚СЂР°РЅР° РЅР° РєСѓРїСѓРІР°С‡РёС‚Рµ РЅР° РєР°СЃР°С‚Р° РЅР° РјР°РіР°Р·РёРЅР°");
 		System.out.println();
-		//vsichkoPoLevche.printGoods();
-		rachka.pay();
-		
-		nachka.pay();
 		vsichkoPoLevche.printGoods();
-		//9. Визуализиране на наличностите в магазина преди и след като е пазарувал купувача.
+		rachka.pay();
+		nachka.pay();
 		
+		//9. Р’РёР·СѓР°Р»РёР·РёСЂР°РЅРµ РЅР° РЅР°Р»РёС‡РЅРѕСЃС‚РёС‚Рµ РІ РјР°РіР°Р·РёРЅР° РїСЂРµРґРё Рё СЃР»РµРґ РєР°С‚Рѕ Рµ РїР°Р·Р°СЂСѓРІР°Р» РєСѓРїСѓРІР°С‡Р°.п‚·
+		vsichkoPoLevche.printGoods();
 	}
 
 }

@@ -135,7 +135,7 @@ public class Demo {
 	}
 
 	// 8. Да се изведе търговецът с най-голям размер на изплатения данък към
-	// държавата.
+	// държавата.
 	static void printBestTaxPayers(ArrayList<Merchant> merch) {
 		System.out.print("8. === Best tax payer : ");
 		Collections.sort(merch, (o1,  o2) -> o2.getTaxPaid() - o1.getTaxPaid() > 0 ? 1 : -1);

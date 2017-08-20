@@ -1,13 +1,11 @@
-/**
- * 
- */
+
 package shipment;
 
 import Town.Citizen;
 
 /**
- * @author NIE
- *Таксата за пускане на писмо е 0.5 лева.
+ * п‚·
+ *РўР°РєСЃР°С‚Р° Р·Р° РїСѓСЃРєР°РЅРµ РЅР° РїРёСЃРјРѕ Рµ 0.5 Р»РµРІР°.
  */
 public class Letter extends Shipment {
 

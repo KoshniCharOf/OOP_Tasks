@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package client;
 
 import java.util.Random;
@@ -18,7 +16,7 @@ import estates.Terrane;
 public class Seller extends Client  {
 	
 	
-public Seller(String name) {
+	public Seller(String name) {
 		super(name);
 		this.estate = getRandomEstate();
 	}
@@ -41,10 +39,10 @@ public Seller(String name) {
 	return e;
 }
 
-	//	Всеки клиент може да изпълнява следните действия:
-//		• Ако е продавач – да регистрира имота си за продажба в агенцията. В такъв случай от
-//		агенцията му се причислява агент на произволен принцип. Имотът влиза в каталога на
-//		агенцията, а клиента – в списъка с продавачи на агента.
+/*		Всеки клиент може да изпълнява следните действия:
+		• Ако е продавач – да регистрира имота си за продажба в агенцията. В такъв случай от
+		агенцията му се причислява агент на произволен принцип. Имотът влиза в каталога на
+		агенцията, а клиента – в списъка с продавачи на агента.*/
 	public void registerEstate(Agency a){
 		this.agent = a.asignAgent();
 		this.estate.setAgent(agent);
@@ -52,7 +50,4 @@ public Seller(String name) {
 		this.agent.addSeller(this);
 	}
 
-	
-
-	
 }

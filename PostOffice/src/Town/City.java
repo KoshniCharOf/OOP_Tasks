@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package Town;
 
 import java.util.ArrayList;
@@ -9,9 +7,9 @@ import java.util.Stack;
 import post.PostBox;
 
 /**
- * @author NIE
- *Пощенската станция е разположила 25 улични пощенски кутии
-навсякъде из града.
+ * п‚·
+ *РџРѕС‰РµРЅСЃРєР°С‚Р° СЃС‚Р°РЅС†РёСЏ Рµ СЂР°Р·РїРѕР»РѕР¶РёР»Р° 25 СѓР»РёС‡РЅРё РїРѕС‰РµРЅСЃРєРё РєСѓС‚РёРё
+РЅР°РІСЃСЏРєСЉРґРµ РёР· РіСЂР°РґР°.
  */
 public class City {
 	public ArrayList<PostBox> boxes = new ArrayList<>();
@@ -23,7 +21,6 @@ public class City {
 			boxes.add(new PostBox());
 		}
 	}
-
 
 
 	public ArrayList<PostBox> getBoxes() {

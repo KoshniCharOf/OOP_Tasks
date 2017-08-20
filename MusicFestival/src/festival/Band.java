@@ -2,14 +2,12 @@ package festival;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
-import festival.Musician.MusicianT;
-
 
 
 public class Band {
 
-	/* Групите са съставени от музиканти, свирещи на различни
-инструменти или вокалисти. Всяка група има няколко песни, които ще изпълни.*/
+	/* п‚· Р“СЂСѓРїРёС‚Рµ СЃР° СЃСЉСЃС‚Р°РІРµРЅРё РѕС‚ РјСѓР·РёРєР°РЅС‚Рё, СЃРІРёСЂРµС‰Рё РЅР° СЂР°Р·Р»РёС‡РЅРё
+РёРЅСЃС‚СЂСѓРјРµРЅС‚Рё РёР»Рё РІРѕРєР°Р»РёСЃС‚Рё. Р’СЃСЏРєР° РіСЂСѓРїР° РёРјР° РЅСЏРєРѕР»РєРѕ РїРµСЃРЅРё, РєРѕРёС‚Рѕ С‰Рµ РёР·РїСЉР»РЅРё.*/
 	private String name;
 	private ArrayList<Musician>  musicians ;
 	private ArrayList<Song> songs;

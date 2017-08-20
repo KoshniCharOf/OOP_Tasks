@@ -5,17 +5,14 @@ import java.util.Map.Entry;
 
 import products.Product;
 
-/**
- * 
- */
 
 /**
- * @author NIE
- *Ìàãàçèíúò èìà ñëåäíèòå õàðàêòåðèñòèêè:
-* Íàèìåíîâàíèå;
-* Àäðåñ;
-* Ïàðè â êàñàòà;
-* Ñïèñúê ñ ïðîäóêòè.
+ * ï‚·
+ *ÐœÐ°Ð³Ð°Ð·Ð¸Ð½ÑŠÑ‚ Ð¸Ð¼Ð° ÑÐ»ÐµÐ´Ð½Ð¸Ñ‚Ðµ Ñ…Ð°Ñ€Ð°ÐºÑ‚ÐµÑ€Ð¸ÑÑ‚Ð¸ÐºÐ¸:
+* ÐÐ°Ð¸Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¸Ðµ;
+* ÐÐ´Ñ€ÐµÑ;
+* ÐŸÐ°Ñ€Ð¸ Ð² ÐºÐ°ÑÐ°Ñ‚Ð°;
+* Ð¡Ð¿Ð¸ÑÑŠÐº Ñ Ð¿Ñ€Ð¾Ð´ÑƒÐºÑ‚Ð¸.
  */
 public class Shop {
 
@@ -36,18 +33,22 @@ public class Shop {
 		}
 		
 	}
+	
 	private String validString(String s){
 		if(s!=null && !s.isEmpty()){
 			return s;
 		}
 		return "unknown";
 	}
+	
 	private double validNum(double num){
 		return num >= 0? num: (num*-1);
 	}
+	
 	private boolean validRoom(HashMap<Product, Integer> prod, int size){
-		return prod.size() <= size;//???
+		return prod.size() <= size;
 	}
+	
 	public void printGoods(){
 		System.out.println("====Availability====");
 		for (Entry<Product, Integer> it : products.entrySet()) {
@@ -55,9 +56,11 @@ public class Shop {
 		}
 		System.out.println();
 	}
+	
 	public void loadShop(Product p, int quantity){
 		this.products.put(p, quantity);
 	}
+	
 	public void removeProduct(Product p, int quantity){
 		int updatedQuantity = this.products.get(p)- quantity;
 		if(updatedQuantity > 0){
@@ -67,9 +70,11 @@ public class Shop {
 			this.products.put(p, 0);
 		}
 	}
+	
 	public HashMap<Product, Integer> getProducts() {
 		return products;
 	}
+	
 	public void collectMoney(double sum){
 		this.cash += sum;
 	}

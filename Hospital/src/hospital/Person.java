@@ -48,5 +48,4 @@ public abstract class Person {
 		return true;
 	}
 
-
 }

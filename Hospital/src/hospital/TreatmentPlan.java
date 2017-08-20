@@ -30,5 +30,4 @@ public class TreatmentPlan {
 		return daysHospitalized;
 	}
 	
-
 }

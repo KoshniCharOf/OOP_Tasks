@@ -2,20 +2,17 @@ package common;
 import agency.Agency;
 import client.Buyer;
 import client.Client;
-import client.Seller;
 import estates.Estate;
 
-/**
- * 
- */
 
 /**
- * Ще изповяда сделката
+ * п‚·  Р©Рµ РёР·РїРѕРІСЏРґР° СЃРґРµР»РєР°С‚Р°
  *
  */
 public final class Notary {
 	
 	public static final boolean conveyancingDeal(Client seller, Estate e, Buyer buyer){
+		
 		if(!e.getOwner().equals(seller)){
 			System.out.println("This seller is not the owner.");
 			return false;

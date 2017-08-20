@@ -1,0 +1,126 @@
+package demoGas;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import java.util.Random;
+
+import driver.Driver;
+import vehicles.Bus;
+import vehicles.Car;
+import vehicles.Truck;
+import vehicles.Vehicle;
+
+
+public class Demo {
+	public static void main(String[] args) {
+
+	/*	 Да се реализира демо програма, която има следните възможности:
+		 1. Създаване на бензиностанция с автоматично генерирани винетки. Да
+		 се изведат на екрана, заедно с техните цена и цвят.*/
+		GasStation monopOil = new GasStation();
+		
+		
+		// 2. Създаване на 20 шофьора с произволни имена. Да им се дадат произволна
+		// стойност пари. Да им се зададе бензиностанция, от която да пазаруват винетки. -
+		
+		ArrayList<Driver> drivers = new ArrayList<>();
+		for (int i = 0; i < 20; i++) {
+			drivers.add(new Driver("Pernishki " + (i + 1), new Random().nextInt(20000), monopOil));
+		}
+		
+		// 3. Създаване на 200 превозни средства от произволен тип (кола,
+		// автобус, камион)
+		ArrayList<Vehicle> vehicles = new ArrayList<>();
+		for (int i = 0; i < 200; i++) {
+			switch (new Random().nextInt(3)) {
+			case 0:
+				vehicles.add(new Car("Golf " + i));
+				break;
+			case 1:
+				vehicles.add(new Truck("Actros " + i));
+				break;
+			case 2:
+				vehicles.add(new Bus("Solaris " + i));
+				break;
+			default:
+				break;
+			}
+		}
+		
+		// и на всеки шофьор да се дадат по 10 от тях като всяко превозно
+		// средство се управлява от един шофьор. - 10т.
+		int k = 0;
+		for (Driver d : drivers) {
+			for (int m = 0; m < 10; m++) {
+				if(k < vehicles.size()){
+					d.addVehile(vehicles.get(k++));
+				}
+					
+			}
+		}
+/*		 if want I equal vehicles next time
+		 int t = 0;
+		 for (Driver d : drivers) {
+		 if(vehicles.get(t+1)==null)break;
+		 for (int m = 0; m < vehicles.size()/drivers.size(); m++) {
+		 d.addVehile(vehicles.get(t++));
+		 }
+		 }*/
+
+		// 4. Всеки 3-ти шофьор на произволен принцип за някои превозни средства да
+		// купи 5 винетки за произволно генериран срок (ден, месец, година).
+		// Останалите шофьори да купят винетки за всичките си превозни средства за
+		// произволно генериран срок. - 10т.
+		for (int i = 0; i < drivers.size(); i++) {
+			Driver d = drivers.get(i);
+			if (i % 3 == 0) { 
+				for (int j = 0; j < 5; ) {
+					int v = new Random().nextInt(d.getVehicles().size());
+					if(d.getVehicles().get(v).getVignette()==null){
+						d.buyVinette(v, d.randomPeriod());
+						j++;
+					}
+				}
+				continue;
+			}
+			d.buyForAll();
+		}
+		
+		// 5. Да се изведе информация за всички шофьори – колко коли карат,
+		// колко от техните превозни средства имат винетка с изтичащ срок за дадена дата
+		// и колко пари са им останали.
+		LocalDate date1 = LocalDate.of(2017, 8, 17);
+		for (Driver d : drivers) {
+			System.out.println(d+" count of expiring vignettes before : "+date1+
+								"   "+d.getExpiredVinettes(d.getVehicles(), date1).size());
+		}
+		
+		// 6. Да се изведат всички останали винетки в бензиностанцията в сортиран по цена ред
+		monopOil.printVignettes();
+		System.out.println("    DAY TURNOVER:   " + monopOil.getTurnover());
+		
+		// 7. Да се изведат всички камиони, които имат изтекли винетки за дадена дата. -
+		LocalDate date = LocalDate.of(2017, 8, 17);
+		printExpiredVinetteTrucks(drivers, date);
+	}
+
+	static void printExpiredVinetteTrucks(ArrayList<Driver> d, LocalDate date) {
+		System.out.println("EXPIRED VINETTE TRUCKS ON "+date);
+		ArrayList<Vehicle> trucks = new ArrayList<>();
+		//for each driver
+		for (Driver dri : d) {
+			for (Vehicle v : dri.getVehicles()) {
+				//add all trucks    that has vinnete
+				if (v.getVignette() != null && v.getVignette().getStickTime() == 10) {
+					trucks.add(v);
+				}
+			}
+			//print expired           //reuse old method
+			for (Vehicle vehicle : dri.getExpiredVinettes(trucks, date)) {
+				System.out.println(vehicle+" "+vehicle.getVignette());
+			}
+			trucks.clear();
+		}
+	}
+}

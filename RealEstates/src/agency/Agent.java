@@ -6,17 +6,15 @@ import client.Buyer;
 import client.Seller;
 import common.Person;
 
-/**
- * 
- */
+
 
 /**
- * Всеки агент съдържа:
-• име;
-• телефонен номер;
-• списък с неповтарящи се клиенти, които продават имот (продавачи);
-• списък с неповтарящи се клиенти, които търсят имот (купувачи);
-• списък с огледи, които купувачи са направили към имоти.
+ * п‚· Р’СЃРµРєРё Р°РіРµРЅС‚ СЃСЉРґСЉСЂР¶Р°:
+вЂў РёРјРµ;
+вЂў С‚РµР»РµС„РѕРЅРµРЅ РЅРѕРјРµСЂ;
+вЂў СЃРїРёСЃСЉРє СЃ РЅРµРїРѕРІС‚Р°СЂСЏС‰Рё СЃРµ РєР»РёРµРЅС‚Рё, РєРѕРёС‚Рѕ РїСЂРѕРґР°РІР°С‚ РёРјРѕС‚ (РїСЂРѕРґР°РІР°С‡Рё);
+вЂў СЃРїРёСЃСЉРє СЃ РЅРµРїРѕРІС‚Р°СЂСЏС‰Рё СЃРµ РєР»РёРµРЅС‚Рё, РєРѕРёС‚Рѕ С‚СЉСЂСЃСЏС‚ РёРјРѕС‚ (РєСѓРїСѓРІР°С‡Рё);
+вЂў СЃРїРёСЃСЉРє СЃ РѕРіР»РµРґРё, РєРѕРёС‚Рѕ РєСѓРїСѓРІР°С‡Рё СЃР° РЅР°РїСЂР°РІРёР»Рё РєСЉРј РёРјРѕС‚Рё.
  *
  */
 public class Agent extends Person{
@@ -36,27 +34,34 @@ public class Agent extends Person{
 		this.buyers = new HashSet<>();
 		this.views = new ArrayList<>();
 	}
+	
 	public void addSeller(Seller s){
 		sellers.add(s);
 	}
+	
 	public void addBuyer(Buyer b){
 		buyers.add(b);
 	}
+	
 	public ArrayList<View> getViews() {
 		return views;
 	}
+	
 	public Agency getWorkPlace() {
 		return workPlace;
 	}
+	
 	public void recieveMoney(double money){
 		if(money > 0){
 			this.money+=money;
 		}
 	}
+	
 	@Override
 	public String toString() {
 		return "Agent [ name=" + name + "]";
 	}
+	
 	public double getMoney() {
 		return money;
 	}

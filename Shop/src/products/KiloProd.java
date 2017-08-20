@@ -4,7 +4,7 @@ package products;
  */
 
 /**
- * @author NIE
+ * 
  *sold by kilogram
  */
 public class KiloProd extends Product{

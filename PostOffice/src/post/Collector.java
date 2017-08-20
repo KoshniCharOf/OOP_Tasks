@@ -8,8 +8,8 @@ import java.util.Stack;
 import shipment.Letter;
 
 /**
- * @author NIE
- * няма стаж
+ *п‚·
+ * РЅСЏРјР° СЃС‚Р°Р¶
  */
 public class Collector extends PostalWorker {
 
@@ -19,7 +19,7 @@ public class Collector extends PostalWorker {
 		super();
 		
 	}
-	//събира писма
+	//СЃСЉР±РёСЂР° РїРёСЃРјР°
 	protected void collect(PostBox box){
 		while(!box.getLetters().isEmpty()){
 			bag.push(box.getLetters().pop());

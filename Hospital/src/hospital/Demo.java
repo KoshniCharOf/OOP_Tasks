@@ -3,6 +3,7 @@ package hospital;
 public class Demo {
 
 	public static void main(String[] args) {
+		
 		/* Да се реализира прием на 5 пациента в болницата. При прием на всеки
 		пациент на конзолата да се извежда следното съобщение:
 		'Пациент <firstName> <lastName> от пол <gender> e приет с диагноза

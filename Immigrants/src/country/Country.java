@@ -26,7 +26,7 @@ public class Country {
 		
 		this.name = Val.validStr(name);
 		
-		this.cities = new ArrayList<>();
+		this.cities = new ArrayList<>(); 
 		String[] c = { "Sofia", "Plovdiv", "Varna", "Burgas", "Polski Trambej" };
 		
 		for (int i = 0; i < c.length; i++) {

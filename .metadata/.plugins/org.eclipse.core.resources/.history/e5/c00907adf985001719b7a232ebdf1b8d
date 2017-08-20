@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/Town/Citizen.java=UTF-8
+encoding//src/Town/City.java=UTF-8
+encoding//src/post/PostBox.java=UTF-8
+encoding//src/post/PostOffice.java=UTF-8
+encoding//src/post/PostalWorker.java=UTF-8
+encoding//src/post/Postman.java=UTF-8
+encoding//src/shipment/Letter.java=UTF-8
+encoding//src/shipment/Parcel.java=UTF-8
+encoding//src/shipment/Shipment.java=UTF-8

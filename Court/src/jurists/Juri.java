@@ -31,6 +31,6 @@ public class Juri extends Jurist {
 		return "Juri [" + name + "]";
 	}
 
-	//
+	
 
 }

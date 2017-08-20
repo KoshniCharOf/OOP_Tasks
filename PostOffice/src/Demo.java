@@ -29,9 +29,10 @@ public class Demo {
 		dpd.printLettersPersent();
 		dpd.printPostmanDeliveries();
 		dpd.printFragilePercentOfParcels();
+		
 		LocalDate date = LocalDate.of(2017, 8, 15);
 		dpd.printShipmentsByDate(date);
-		//dpd.printArchive();
+		dpd.printArchive();
 	}
 
 }

@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package estates;
 
 import java.util.Random;
@@ -8,9 +6,9 @@ import java.util.Random;
 import client.Client;
 
 /**
- * 2. къщи (етаж от къща, цяла къща); Апартаментите и къщите разполагат с
- * информация за вид строителство: ЕПК, Тухла, Панел или Кирпич. Къщите
- * разполагат допълнително с брой паркоместа и площ на двора.
+ * 2. РєСЉС‰Рё (РµС‚Р°Р¶ РѕС‚ РєСЉС‰Р°, С†СЏР»Р° РєСЉС‰Р°); РђРїР°СЂС‚Р°РјРµРЅС‚РёС‚Рµ Рё РєСЉС‰РёС‚Рµ СЂР°Р·РїРѕР»Р°РіР°С‚ СЃ
+ * РёРЅС„РѕСЂРјР°С†РёСЏ Р·Р° РІРёРґ СЃС‚СЂРѕРёС‚РµР»СЃС‚РІРѕ: Р•РџРљ, РўСѓС…Р»Р°, РџР°РЅРµР» РёР»Рё РљРёСЂРїРёС‡. РљСЉС‰РёС‚Рµ
+ * СЂР°Р·РїРѕР»Р°РіР°С‚ РґРѕРїСЉР»РЅРёС‚РµР»РЅРѕ СЃ Р±СЂРѕР№ РїР°СЂРєРѕРјРµСЃС‚Р° Рё РїР»РѕС‰ РЅР° РґРІРѕСЂР°.п‚·
  */
 public class House extends Estate implements IBuilding {
 	
@@ -22,8 +20,6 @@ public class House extends Estate implements IBuilding {
 		this.kind = Kind.values()[new Random().nextInt(Kind.values().length)];
 		this.construction = Construction.values()[new Random().nextInt(Construction.values().length)];
 	}
-
-	
 
 	private enum Kind {
 		HOUSE, FLOOR
@@ -43,7 +39,8 @@ public class House extends Estate implements IBuilding {
 
 		return "" + this.construction;
 	}
-	//за къщите между 50 000 и 80 000 евро,
+	
+	//Р·Р° РєСЉС‰РёС‚Рµ РјРµР¶РґСѓ 50 000 Рё 80 000 РµРІСЂРѕ,
 	@Override
 	protected double validPrice() {
 		

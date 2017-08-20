@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package estates;
 
 import java.util.Random;
@@ -9,7 +7,7 @@ import client.Client;
 
 
 /**
- * За парцелите има информация дали са в регулация или не.
+ * п‚· Р—Р° РїР°СЂС†РµР»РёС‚Рµ РёРјР° РёРЅС„РѕСЂРјР°С†РёСЏ РґР°Р»Рё СЃР° РІ СЂРµРіСѓР»Р°С†РёСЏ РёР»Рё РЅРµ.
  *
  */
 public class Terrane extends Estate {
@@ -20,13 +18,15 @@ public class Terrane extends Estate {
 		this.kind = Kind.values()[new Random().nextInt(Kind.values().length)];
 		this.isReguleted = new Random().nextBoolean();
 	}
+	
 	private enum Kind {
 		FIELD, MEADOW, FOREST
 	}
 
 	private Kind kind;
 	private boolean isReguleted;
-	//за парцелите – между 30 000 и 85 000 евро.
+	
+	//Р·Р° РїР°СЂС†РµР»РёС‚Рµ вЂ“ РјРµР¶РґСѓ 30 000 Рё 85 000 РµРІСЂРѕ.
 	@Override
 	protected double validPrice() {
 		

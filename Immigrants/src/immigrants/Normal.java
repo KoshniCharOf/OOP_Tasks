@@ -11,7 +11,6 @@ import country.Passport;
  * 
 • Нормални имигранти – те задължително имат паспорт, не притежават
 оръжие и имат до 10 роднини.
-
  */
 public class Normal extends Immigrant {
 

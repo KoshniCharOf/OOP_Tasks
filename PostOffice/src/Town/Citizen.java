@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package Town;
 
 import java.util.ArrayList;
@@ -13,8 +11,8 @@ import shipment.Parcel;
 import shipment.Shipment;
 
 /**
- * @author NIE
- *В града живеят граждани, които имат име, фамилия и адрес.
+ * п‚·
+ *Р’ РіСЂР°РґР° Р¶РёРІРµСЏС‚ РіСЂР°Р¶РґР°РЅРё, РєРѕРёС‚Рѕ РёРјР°С‚ РёРјРµ, С„Р°РјРёР»РёСЏ Рё Р°РґСЂРµСЃ.
  */
 public class Citizen {
 	String[] namesMe = {"Kolio","Toshko","Petar","Iliya","Slavi","Miro","Dancho","Pancho","Racho","Tacho","Pacho","Nacho","Kacho","Bacho"};
@@ -34,8 +32,9 @@ public class Citizen {
 			friends.add(new Citizen());
 		}
     }
-//	Всеки гражданин може да пуска писма в някоя от пощенските
-//	кутии (на random принцип).
+    
+//	Р’СЃРµРєРё РіСЂР°Р¶РґР°РЅРёРЅ РјРѕР¶Рµ РґР° РїСѓСЃРєР° РїРёСЃРјР° РІ РЅСЏРєРѕСЏ РѕС‚ РїРѕС‰РµРЅСЃРєРёС‚Рµ
+//	РєСѓС‚РёРё (РЅР° random РїСЂРёРЅС†РёРї).
 	public void sendLetter(City t){
 		addFriends();//added here because I don't want to slow down the constructor for Postal workers too
 		Letter longLongDramaLetter = new Letter(this, this.friends.get(new Random().nextInt(friends.size())));
@@ -44,8 +43,8 @@ public class Citizen {
 		System.out.println("Letter send in PostBox number: "+box.getNum());
 	}
 	
-//	Гражданите също така могат да подават директно в пощенската
-//	станция както писма, така и колети (на random принцип)
+//	Р“СЂР°Р¶РґР°РЅРёС‚Рµ СЃСЉС‰Рѕ С‚Р°РєР° РјРѕРіР°С‚ РґР° РїРѕРґР°РІР°С‚ РґРёСЂРµРєС‚РЅРѕ РІ РїРѕС‰РµРЅСЃРєР°С‚Р°
+//	СЃС‚Р°РЅС†РёСЏ РєР°РєС‚Рѕ РїРёСЃРјР°, С‚Р°РєР° Рё РєРѕР»РµС‚Рё (РЅР° random РїСЂРёРЅС†РёРї)
 	public void shipSomething(PostOffice p ){
 		addFriends();
 		Citizen reciever = this.friends.get(new Random().nextInt(friends.size()));

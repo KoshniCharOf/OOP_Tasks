@@ -7,9 +7,9 @@ import supliers.Supplier;
 import tradeObjects.TradeObject;
 
 /**
- * • ЕТ – едноличен търговец – той оперира само с доставчици на дребно (не
- * повече от 5) и притежава един търговски обект. ЕТ може да притежава будка на
- * улицата или сергия на пазара.
+ * п‚· Р•Рў вЂ“ РµРґРЅРѕР»РёС‡РµРЅ С‚СЉСЂРіРѕРІРµС† вЂ“ С‚РѕР№ РѕРїРµСЂРёСЂР° СЃР°РјРѕ СЃ РґРѕСЃС‚Р°РІС‡РёС†Рё РЅР° РґСЂРµР±РЅРѕ (РЅРµ
+ * РїРѕРІРµС‡Рµ РѕС‚ 5) Рё РїСЂРёС‚РµР¶Р°РІР° РµРґРёРЅ С‚СЉСЂРіРѕРІСЃРєРё РѕР±РµРєС‚. Р•Рў РјРѕР¶Рµ РґР° РїСЂРёС‚РµР¶Р°РІР° Р±СѓРґРєР° РЅР°
+ * СѓР»РёС†Р°С‚Р° РёР»Рё СЃРµСЂРіРёСЏ РЅР° РїР°Р·Р°СЂР°.
  *
  */
 public class ET extends Merchant {
@@ -20,7 +20,7 @@ public class ET extends Merchant {
 
 	@Override
 	public void addTradeObject(TradeObject to) {
-		if (this.tradeObject.size() < 1 && to.isETTrObject()) {//будка на улицата или сергия на пазара
+		if (this.tradeObject.size() < 1 && to.isETTrObject()) {//Р±СѓРґРєР° РЅР° СѓР»РёС†Р°С‚Р° РёР»Рё СЃРµСЂРіРёСЏ РЅР° РїР°Р·Р°СЂР°
 			this.tradeObject.add(to);
 		}
 
@@ -28,7 +28,7 @@ public class ET extends Merchant {
 
 	@Override
 	public void addSuplier(Supplier supp) {
-		if (this.supplier.size() < 5 && supp.getDiscount() == 1) {//с доставчици на дребно без отстъпка
+		if (this.supplier.size() < 5 && supp.getDiscount() == 1) {//СЃ РґРѕСЃС‚Р°РІС‡РёС†Рё РЅР° РґСЂРµР±РЅРѕ Р±РµР· РѕС‚СЃС‚СЉРїРєР°
 			this.supplier.add(supp);
 		}
 

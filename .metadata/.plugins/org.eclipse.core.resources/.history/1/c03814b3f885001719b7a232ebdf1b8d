@@ -1,0 +1,236 @@
+package shop;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Random;
+import java.util.TreeSet;
+
+import Instruments.MusicInstrument;
+
+
+
+/**
+ * 
+ */
+
+/**
+ * @author NIE
+ *Да се направи програма, която симулира работата на магазин за музикални инструменти.
+ *
+ *Магазинът има каса, в която има пари в наличност.
+ */
+public class MusicShop {
+	
+	private HashMap<String, HashMap<MusicInstrument, Integer>> stock = new HashMap<>();
+	private HashMap<MusicInstrument, Integer> lastOrders = new HashMap<>();
+	private double cash;
+	private Deliverer delcho = new Deliverer();
+	
+//	В магазинът могат да се извършват следните операции:
+//		1. продажба на инструмент (по наименование и бройка). Продажбата увеличава парите в
+//		наличност на магазина и премахва броят продадени инструменти от наличните в
+//		магазина. Продажбата може да се осъществи само ако има достатъчно налични
+//		бройки от инструмента. При невъзможност да се продадат инструментите, да се върне
+//		подходящо съобщение към потребителя.
+	public void sell(String s, int count){
+		if(count <= 0){
+			System.out.println("invalid count");
+			return;
+		}
+		for (Entry<String, HashMap<MusicInstrument, Integer>> i : this.stock.entrySet()) {
+			for (Entry<MusicInstrument, Integer> i2 : i.getValue().entrySet()) {
+				if(!i2.getKey().getName().equalsIgnoreCase(s)){
+					continue;
+				}
+				if(i2.getValue() < count){
+					System.out.println("Sorry we have "+i2.getValue()+" "+i2.getKey().getName()+" you want "+count);
+//					• Да се даде възможност клиент да си поръчва инструмент ако той не е наличен в
+//					магазина. Тогава магазинът трябва да заявки инструментите (по наименование и брой)
+//					към доставчика и да върне информация на клиента колко време ще е нужно на
+//					поръчката, за да пристигне.
+
+					delcho.getDeliverTime(s, count-i2.getValue());
+					load(s, count);// may be not exactly done
+					//return;
+				}
+				
+				this.cash+=i2.getKey().getPrice()*count;
+				i2.setValue(i2.getValue()-count);
+				//archive my sale for statistics
+				i2.getKey().setQuantity(i2.getKey().getQuantity()-count);;
+				i2.getKey().setSales(i2.getKey().getSales()+count);
+				System.out.println("SOLD "+i2.getKey());
+				return;
+			}
+		}
+		System.out.println("Sorry we don't have any of "+s+" come tomorow to make a purchase");
+		delcho.getDeliverTime(s, count);
+		load(s, count);
+	}
+	//2. Приемане на нови инструменти за продажба в магазина (наименование и бройка). // NOT инструмент и бройка
+	public void load(String s, int count){
+		MusicInstrument m = new MusicInstrument(s, count);
+		int quantity = 0;
+		if(!stock.containsKey(m.getType())){
+			stock.put(m.getType(), new HashMap<MusicInstrument, Integer>());
+		}
+		if(stock.get(m.getType()).get(m)!=null){
+			quantity = stock.get(m.getType()).get(m).intValue();
+			
+		}
+		m.setQuantity(quantity+count);
+		stock.get(m.getType()).put(m, quantity+count);
+	}
+//	3. Изготвяне на каталог на инструментите в магазина:
+//		-
+//		- списък с инструментите, които са налични в магазина в момента
+	
+	//- списък с инструментите, подредени по вид
+	public void printInStock(){
+		for (Entry<String, HashMap<MusicInstrument, Integer>> it : stock.entrySet()) {
+			System.out.println("======"+it.getKey()+"=====");
+			for (Entry<MusicInstrument, Integer> it2 : it.getValue().entrySet()) {
+				System.out.println(it2.getKey().getName()+" count "+it2.getValue());
+			}
+		}
+	}
+	 
+	private TreeSet<MusicInstrument> makeTree(){
+		TreeSet<MusicInstrument> tree = new TreeSet<>();
+		for (Entry<String, HashMap<MusicInstrument, Integer>> m : this.stock.entrySet()) {
+			for (MusicInstrument mu : m.getValue().keySet()) {
+				tree.add(mu);
+			}
+		}
+		return tree;		
+	}
+	private List<MusicInstrument> makeList(){
+		List<MusicInstrument> list = new ArrayList<>();//hmm here I have a lot of hidden opps
+		for (Entry<String , HashMap<MusicInstrument, Integer>> mm : this.stock.entrySet()) {
+			for (MusicInstrument mus : mm.getValue().keySet()) {
+				list.add(mus);
+			}
+		}
+		return list;
+	}
+	//списък с инструментите, подредени по вид
+	public void printByType(){
+		for (MusicInstrument m : makeTree()) {
+			System.out.println(m.getType()+" "+m.getName());
+		}
+	}
+//		- списък с инструментите, подредени по наименование в азбучен ред
+	public void printByName(){
+		TreeSet<MusicInstrument> tree = new TreeSet<>(( o1,  o2 )->o1.getName().compareTo(o2.getName()));
+			
+		//makeTree().comparator().compare(o1, o2) HOW IT WORKS?
+		for (MusicInstrument m : makeTree()) {
+			tree.add(m);
+		}
+		for (MusicInstrument m : tree) {
+			System.out.println(m.getName()+" "+m.getPrice()+" lv");
+		}
+	}
+//		- списък с инструментите, подредени по цена (възможност за избор на възходящо
+//		или низходящо подреждане)
+	public void printByPrice(String upDown){
+		System.out.println("BY PRICE");
+		int up = upDown.equalsIgnoreCase("up")?-1:1;
+		List<MusicInstrument> list = makeList();
+		Collections.sort(list, ((o1, o2)->(o1.getPrice()-o2.getPrice()>0? 1 : -1)*up));
+		
+		for (MusicInstrument m : list) {
+			System.out.println(m.getPrice()+"lv "+m.getName());
+		}
+	}
+	
+//	4. Изготвяне на справки за работата на магазина
+//	- генериране на списък с продадени инструменти, подредени по брой продажби
+	private List<MusicInstrument> gimmiArrSales(){
+		
+		List<MusicInstrument> arr = makeList();
+		
+		Collections.sort(arr, (m1 , m2)-> m2.getSales()-m1.getSales());
+		
+		return arr;
+	}
+	public void printBySales(){
+		
+		for (MusicInstrument m : gimmiArrSales()) {
+			System.out.println(m);
+		}
+	}
+//	- генериране на обща сума, получена при продажба на инструменти ---this.cash 
+//	- актуална информация за най-продаван инструмент (като бройка спрямо
+//	останалите)
+	public void printBestseller(){
+		System.out.println("=====BEST SELLER======");
+		System.out.println(gimmiArrSales().get(0));
+		
+	}
+//	- актуална информация за най-непродаван инструмент
+	public void printWorstseller(){
+		System.out.println("=====WORST SELLER======");
+		List<MusicInstrument> arr = gimmiArrSales();
+		System.out.println(arr.get(arr.size()-1));
+		
+	}
+//	- актуална информация за вид инструменти, които най-много се харчат (с най-
+//	голяма обща бройка продадени от този вид)
+	public void printBestsellerType(){
+		System.out.println("==== BEST SELLING TYPE ====");
+		String type = null;
+		int max = 0;
+		int current = 0;
+		for (Entry<String, HashMap<MusicInstrument, Integer>> it : this.stock.entrySet()) {
+			for (Entry<MusicInstrument, Integer> itt : it.getValue().entrySet()) {
+				current += itt.getKey().getSales();
+			}
+			if(max<current){
+				max = current;
+				type = it.getKey();
+			}
+			current=0;
+		}
+		System.out.println(type+" "+max+" times sold");
+	}
+//	- актуална информация за вид инструменти, от които магазинът има най-голям
+//	приход (с най-голяма обща сума от продажбите)
+	public void printBestProfitType(){
+		System.out.println("==== BEST PROFIT TYPE ====");
+		String type = null;
+		double max = 0;
+		double current = 0;
+		for (Entry<String, HashMap<MusicInstrument, Integer>> it : this.stock.entrySet()) {
+			for (Entry<MusicInstrument, Integer> itt : it.getValue().entrySet()) {
+				current += itt.getKey().getSales()*itt.getKey().getPrice();
+			}
+			if(max < current){
+				max = current;
+				type = it.getKey();
+			}
+			current=0;
+		}
+		System.out.println(type+"  SUM:"+max);
+	}
+//TODO	• Да се промени логиката така, че магазинът да прави регламентирани доставки на
+//	всички инструменти с нулева наличност (например веднъж месечно).
+	//private HashMap<String, HashMap<MusicInstrument, Integer>> stock = new HashMap<>();
+	public void orderZeroAvailabilities(){
+		for (Entry<String, HashMap<MusicInstrument, Integer>> it : this.stock.entrySet()) {
+			for (Entry<MusicInstrument, Integer> itt : it.getValue().entrySet()) {
+				if(itt.getValue() <= 0 ){ 
+					int count = new Random().nextInt(5)+1;
+					load(itt.getKey().getName(), new Random().nextInt(5)+1);
+					lastOrders.put(itt.getKey(), count);
+				}
+			}
+		}
+		System.out.println("===LAST ORDERS===");
+		for (Entry<MusicInstrument, Integer> it : lastOrders.entrySet()) {
+			System.out.println("Ordered "+it.getKey()+" count:"+it.getValue());
+		}
+	}
+}

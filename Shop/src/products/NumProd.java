@@ -1,13 +1,12 @@
 package products;
-/**
- * 
- */
+
 
 /**
- * @author NIE
+ * 
  * sold by number
  */
 public class NumProd extends Product{
+	
 	public enum TypoNum{BEER, BOOK, STOOL}
 	private TypoNum type;
 	
@@ -19,7 +18,7 @@ public class NumProd extends Product{
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
+		
 		return " num "+type+" "+ super.toString();
 	}
 

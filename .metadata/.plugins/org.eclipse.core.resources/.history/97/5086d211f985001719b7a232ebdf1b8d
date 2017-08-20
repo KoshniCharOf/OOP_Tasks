@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package post;
+
+import Town.Citizen;
+
+/**
+ * @author NIE
+ **В пощенската станция работят пощальони и събирачи на писма.
+Пощальоните имат име, фамилия и години стаж. Събирачите
+на писма са младши пощальони, които имат нужда от стаж, за да
+се докажат, че може да им се има доверие.(6 точки)
+ */
+public abstract class PostalWorker extends Citizen{ 
+
+	private int servYear;
+	
+	public PostalWorker() {
+		
+		
+	}
+
+	public void setServYear(int servYear) {
+		this.servYear = servYear;
+	}
+	
+}

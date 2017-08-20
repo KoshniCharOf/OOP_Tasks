@@ -1,15 +1,13 @@
-/**
- * 
- */
+
 
 /**
- * за всеки продукт имаме информация за име и
- * наличност в склада. Продуктите са групирани по тип. 
- * При създаване на склада в
- * него трябва да има три типа продукти: FRUITS, VEGETABLES, MEATS, като за
- * всеки тип има по 15 единици наличност на следните продукти: • FRUITS: Banana,
- * Orange, Apple. • VEGETABLES: Potato, Eggplant, Cucumber. • MEATS: Pork, Beef,
- * Chicken
+ * Р·Р° РІСЃРµРєРё РїСЂРѕРґСѓРєС‚ РёРјР°РјРµ РёРЅС„РѕСЂРјР°С†РёСЏ Р·Р° РёРјРµ Рё РЅР°Р»РёС‡РЅРѕСЃС‚ РІ СЃРєР»Р°РґР°. 
+ *  РџСЂРѕРґСѓРєС‚РёС‚Рµ СЃР° РіСЂСѓРїРёСЂР°РЅРё РїРѕ С‚РёРї. 
+ *  п‚· РџСЂРё СЃСЉР·РґР°РІР°РЅРµ РЅР° СЃРєР»Р°РґР° РІ РЅРµРіРѕ С‚СЂСЏР±РІР° РґР° РёРјР° С‚СЂРё С‚РёРїР° РїСЂРѕРґСѓРєС‚Рё:
+  FRUITS, VEGETABLES, MEATS, РєР°С‚Рѕ Р·Р° РІСЃРµРєРё С‚РёРї РёРјР° РїРѕ 15 РµРґРёРЅРёС†Рё РЅР°Р»РёС‡РЅРѕСЃС‚ РЅР° СЃР»РµРґРЅРёС‚Рµ РїСЂРѕРґСѓРєС‚Рё:
+   вЂў FRUITS: Banana, Orange, Apple.
+   вЂў VEGETABLES: Potato, Eggplant, Cucumber. 
+   вЂў MEATS: Pork, Beef, Chicken
  *
  */
 public class Product {
@@ -25,9 +23,10 @@ public class Product {
 	private String type;
 	
 	public Product(String name) {
-		super();
+
 		this.name = "Pumpkin";
 		this.type = "GREEN";
+		
 		for (int i = 0; i < names.length; i++) {
 			for (int j = 0; j < names[i].length; j++) {
 				if(name.equalsIgnoreCase(names[i][j])){
@@ -38,12 +37,15 @@ public class Product {
 			}
 		}
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public String getType() {
 		return type;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -52,6 +54,7 @@ public class Product {
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -73,9 +76,6 @@ public class Product {
 			return false;
 		return true;
 	}
-	
-	
-	
 	
 
 }

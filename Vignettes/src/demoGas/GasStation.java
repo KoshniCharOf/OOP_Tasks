@@ -1,9 +1,4 @@
 package demoGas;
-/**
- * 
- */
-
-
 
 import java.util.Random;
 import java.util.TreeMap;
@@ -17,9 +12,9 @@ import vignettes.Vignette;
 import vignettes.Vignette.Period;
 
 /**
- * Всяка бензиностанция има следните характеристики:
-- Оборот за деня,
-- Списък с винетки, налични за продажба
+ *п‚· Р’СЃСЏРєР° Р±РµРЅР·РёРЅРѕСЃС‚Р°РЅС†РёСЏ РёРјР° СЃР»РµРґРЅРёС‚Рµ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё:
+- РћР±РѕСЂРѕС‚ Р·Р° РґРµРЅСЏ,
+- РЎРїРёСЃСЉРє СЃ РІРёРЅРµС‚РєРё, РЅР°Р»РёС‡РЅРё Р·Р° РїСЂРѕРґР°Р¶Р±Р°
 
  */
 public class GasStation {
@@ -39,12 +34,12 @@ public class GasStation {
 		}
 		printVignettes();
 	}
-	//	Бензиностанцията има следните операции :
+//	Р‘РµРЅР·РёРЅРѕСЃС‚Р°РЅС†РёСЏС‚Р° РёРјР° СЃР»РµРґРЅРёС‚Рµ РѕРїРµСЂР°С†РёРё :
 	
-//		- при създаване да генерира на произволен принцип 10 000 винетки от
-//		всякакъв тип (за кола, за камион, за автобус, дневни, месечни, годишни).
-//		Изисква се бензиностанцията да поддържа този списък постоянно
-//		сортиран по цена.
+/*		- РїСЂРё СЃСЉР·РґР°РІР°РЅРµ РґР° РіРµРЅРµСЂРёСЂР° РЅР° РїСЂРѕРёР·РІРѕР»РµРЅ РїСЂРёРЅС†РёРї 10 000 РІРёРЅРµС‚РєРё РѕС‚
+		РІСЃСЏРєР°РєСЉРІ С‚РёРї (Р·Р° РєРѕР»Р°, Р·Р° РєР°РјРёРѕРЅ, Р·Р° Р°РІС‚РѕР±СѓСЃ, РґРЅРµРІРЅРё, РјРµСЃРµС‡РЅРё, РіРѕРґРёС€РЅРё).
+		РР·РёСЃРєРІР° СЃРµ Р±РµРЅР·РёРЅРѕСЃС‚Р°РЅС†РёСЏС‚Р° РґР° РїРѕРґРґСЉСЂР¶Р° С‚РѕР·Рё СЃРїРёСЃСЉРє РїРѕСЃС‚РѕСЏРЅРЅРѕ
+		СЃРѕСЂС‚РёСЂР°РЅ РїРѕ С†РµРЅР°.*/
 	private Vignette randomVinette() {
 
 		Vignette v = null;
@@ -79,10 +74,10 @@ public class GasStation {
 		
 	}
 	
-//		- Бензиностанцията има и операция за продажба на винетка за определено
-//		превозно средство и за даден период (дневна, месечна, годишна). След
-//		продажба на винетка останалите трябва да останат, отново в сортирана
-//		последователност.
+/*		- Р‘РµРЅР·РёРЅРѕСЃС‚Р°РЅС†РёСЏС‚Р° РёРјР° Рё РѕРїРµСЂР°С†РёСЏ Р·Р° РїСЂРѕРґР°Р¶Р±Р° РЅР° РІРёРЅРµС‚РєР° Р·Р° РѕРїСЂРµРґРµР»РµРЅРѕ
+		РїСЂРµРІРѕР·РЅРѕ СЃСЂРµРґСЃС‚РІРѕ Рё Р·Р° РґР°РґРµРЅ РїРµСЂРёРѕРґ (РґРЅРµРІРЅР°, РјРµСЃРµС‡РЅР°, РіРѕРґРёС€РЅР°). РЎР»РµРґ
+		РїСЂРѕРґР°Р¶Р±Р° РЅР° РІРёРЅРµС‚РєР° РѕСЃС‚Р°РЅР°Р»РёС‚Рµ С‚СЂСЏР±РІР° РґР° РѕСЃС‚Р°РЅР°С‚, РѕС‚РЅРѕРІРѕ РІ СЃРѕСЂС‚РёСЂР°РЅР°
+		РїРѕСЃР»РµРґРѕРІР°С‚РµР»РЅРѕСЃС‚.*/
 	
 	public Vignette sellVinette(Vehicle v, Period p){
 		Vignette vin = newVinette(v, p);
@@ -90,15 +85,15 @@ public class GasStation {
 		if(!this.vinetes.containsKey(vin) || this.vinetes.get(vin) <= 0){
 			System.out.println("No vinette");
 			return null;
-			// I would try to avoid null if not 10000 vinettes and ask for diff period
-//			for (Period p1 : Period.values()) {
-//				vin = newVinette(v, p1);
-//				if(this.vinetes.containsKey(vin) && this.vinetes.get(vin) > 0){//repeating code
-//					this.vinetes.put(vin, this.vinetes.get(vin)-1);
-//					this.turnover +=vin.getPrice();
-//					return vin; 
-//				}
-//			}	
+/*			I would try to avoid null if not 10000 vinettes and ask for diff period
+			for (Period p1 : Period.values()) {
+				vin = newVinette(v, p1);
+				if(this.vinetes.containsKey(vin) && this.vinetes.get(vin) > 0){//repeating code
+					this.vinetes.put(vin, this.vinetes.get(vin)-1);
+					this.turnover +=vin.getPrice();
+					return vin; 
+				}
+			}	*/
 			
 		}else{
 			this.vinetes.put(vin, this.vinetes.get(vin)-1);
@@ -115,6 +110,7 @@ public class GasStation {
 			System.out.println(v.getKey() + " QUANTITY: " + v.getValue());
 		}
 	}
+	
 	public TreeMap<Vignette, Integer> getVinetes() {
 		return vinetes;
 	}
@@ -140,6 +136,7 @@ public class GasStation {
 	public int getTurnover() {
 		return turnover;
 	}
+	
 	public int tellThePrice(Vehicle v, Period p){
 		
 		Vignette vin = newVinette(v, p);
