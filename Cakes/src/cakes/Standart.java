@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 
  */
 package cakes;
@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class Standart extends Cake {
 
-	private enum Kind {BISQUIT, EKLECTIC, FRUIT, CHOCOLATE}
+	private enum Kind {BISQUIT, ECLER, FRUIT, CHOCOLATE}
 	private Kind kind;
 	//Стандартната торта може да бъде сиропирана или не.
 	private boolean isSyrupy;

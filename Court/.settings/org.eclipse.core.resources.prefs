@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//src/citizens/Accused.java=UTF-8
+encoding//src/citizens/Accuser.java=UTF-8
+encoding//src/citizens/Citizen.java=UTF-8
+encoding//src/citizens/Witness.java=UTF-8
+encoding//src/court/Case.java=UTF-8
+encoding//src/court/CivilCase.java=UTF-8
+encoding//src/court/Court.java=UTF-8
+encoding//src/court/CriminalCase.java=UTF-8
+encoding//src/demo/Demo.java=UTF-8
+encoding//src/jurists/Judje.java=UTF-8
+encoding//src/jurists/Juri.java=UTF-8
+encoding//src/jurists/Jurist.java=UTF-8
+encoding//src/jurists/Lawyer.java=UTF-8
+encoding//src/jurists/Prosecutor.java=UTF-8
